@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happei Health — Personalized Nutrition Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<style>
+  :root{
+    --sage:#8A9A7E;
+    --sage-deep:#6F7F62;
+    --clay:#C77B58;
+    --mauve:#B98B96;
+    --rose:#D98C9A;
+    --pink:#E8A4B8;
+    --pink-soft:#F3D9DF;
+    --taupe:#C9BEAF;
+    --taupe-deep:#A89A87;
+    --denim:#7E94A8;
+    --cream:#F5F0E8;
+    --cream-warm:#EFE7D9;
+    --putty:#E7DECF;
+    --ink:#3A3F33;
+    --ink-soft:#5A5F52;
+    --white:#FCFAF5;
+    --display:'Fraunces',Georgia,serif;
+    --body:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--clay);color:var(--white)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 40px;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  nav.scrolled{
+    background:rgba(245,240,232,.88);
+    backdrop-filter:blur(12px);
+    padding:14px 40px;
+    box-shadow:0 1px 0 rgba(58,63,51,.07);
+  }
+  .logo{font-family:var(--display);font-weight:500;font-size:1.35rem;letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--clay);display:inline-block}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:.83rem;letter-spacing:.04em;font-weight:400;color:var(--ink-soft);transition:color .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    background:var(--ink);color:var(--white)!important;
+    padding:10px 22px;border-radius:100px;font-size:.8rem;letter-spacing:.04em;
+    transition:background .3s, transform .3s;
+  }
+  .nav-cta:hover{background:var(--sage-deep);transform:translateY(-1px)}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+  .nav-toggle span{width:24px;height:2px;background:var(--ink);display:block;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    min-height:100vh;display:flex;align-items:center;position:relative;
+    padding:120px 0 60px;
+    background:
+      radial-gradient(120% 90% at 80% 8%, rgba(199,123,88,.10), transparent 52%),
+      radial-gradient(75% 70% at 96% 42%, rgba(217,140,154,.24), transparent 55%),
+      radial-gradient(70% 60% at 88% 80%, rgba(126,148,168,.12), transparent 55%),
+      radial-gradient(90% 80% at 8% 88%, rgba(138,154,126,.16), transparent 60%),
+      var(--cream);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;width:100%}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sage-deep);font-weight:500;margin-bottom:26px;
+  }
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--sage-deep);display:inline-block}
+  h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(2.9rem,6.2vw,4.7rem);
+    line-height:1.02;
+    letter-spacing:-.02em;
+    color:var(--ink);
+  }
+  h1 em{font-style:italic;color:var(--clay);font-weight:300}
+  .hero-sub{
+    font-size:1.13rem;color:var(--ink-soft);max-width:430px;margin:28px 0 36px;font-weight:300;
+  }
+  .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn-primary{
+    background:var(--clay);color:var(--white);
+    padding:15px 32px;border-radius:100px;font-size:.92rem;font-weight:500;letter-spacing:.01em;
+    transition:transform .3s, box-shadow .3s, background .3s;
+    box-shadow:0 8px 24px -10px rgba(199,123,88,.6);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(199,123,88,.7);background:#bb6f4d}
+  .btn-ghost{
+    padding:15px 14px;font-size:.92rem;font-weight:500;color:var(--ink);
+    border-bottom:1.5px solid transparent;transition:border-color .3s;
+  }
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-ghost .arrow{display:inline-block;transition:transform .3s}
+  .btn-ghost:hover .arrow{transform:translateX(4px)}
+
+  /* hero visual: stacked organic frames */
+  .hero-visual{position:relative;height:480px}
+  .blob{
+    position:absolute;border-radius:50% 50% 48% 52%/55% 48% 52% 45%;
+    overflow:hidden;box-shadow:0 30px 60px -25px rgba(58,63,51,.35);
+  }
+  .blob img{width:100%;height:100%;object-fit:cover}
+  .blob-1{width:62%;height:74%;top:0;right:4%;z-index:2;border-radius:48% 52% 50% 50%/52% 50% 50% 48%}
+  .blob-2{width:46%;height:50%;bottom:0;left:0;z-index:3;border:6px solid var(--cream)}
+  .badge-float{
+    position:absolute;bottom:30px;right:0;z-index:4;
+    background:var(--white);border-radius:18px;padding:16px 20px;
+    box-shadow:0 18px 40px -16px rgba(58,63,51,.3);
+    display:flex;align-items:center;gap:13px;max-width:215px;
+  }
+  .badge-float .ring{
+    width:42px;height:42px;border-radius:50%;flex-shrink:0;
+    background:conic-gradient(var(--rose) 0 72%, var(--putty) 72% 100%);
+    display:grid;place-items:center;
+  }
+  .badge-float .ring span{width:30px;height:30px;border-radius:50%;background:var(--white);display:grid;place-items:center;font-size:.7rem;font-weight:600;color:var(--rose)}
+  .badge-float p{font-size:.74rem;line-height:1.35;color:var(--ink-soft)}
+  .badge-float strong{color:var(--ink);font-weight:600;display:block;font-size:.82rem}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{background:var(--taupe);color:var(--ink);padding:18px 0;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(58,63,51,.08);border-bottom:1px solid rgba(58,63,51,.08)}
+  .strip-track{display:inline-flex;gap:48px;animation:marquee 28s linear infinite;font-family:var(--display);font-style:italic;font-size:1.05rem;font-weight:300}
+  .strip-track span{display:inline-flex;align-items:center;gap:48px}
+  .strip-track span::after{content:"✦";color:var(--rose);font-style:normal;font-size:.7rem}
+  .strip-track .varsity{font-family:'Bodoni Moda',serif;font-style:normal;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:1rem}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:108px 0}
+  .sec-head{max-width:620px;margin-bottom:60px}
+  .sec-label{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);font-weight:500;margin-bottom:18px;display:block}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(2.1rem,4.3vw,3.1rem);line-height:1.08;letter-spacing:-.02em}
+  h2 em{font-style:italic;color:var(--sage-deep)}
+  .sec-head p{margin-top:20px;color:var(--ink-soft);font-size:1.07rem;font-weight:300}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--putty)}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+  .about-portrait{position:relative}
+  .about-portrait .frame{border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 28px 56px -28px rgba(58,63,51,.4)}
+  .about-portrait .frame img{width:100%;height:100%;object-fit:cover}
+  .about-portrait .leaf{position:absolute;top:-18px;left:-18px;width:80px;height:80px;background:var(--rose);border-radius:50% 0 50% 50%;z-index:-1}
+  .about-text h2{margin-bottom:24px}
+  .about-text p{color:var(--ink-soft);margin-bottom:18px;font-weight:300;font-size:1.05rem}
+  .about-text p strong{color:var(--ink);font-weight:500}
+  .creds{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .cred{background:var(--white);border-radius:100px;padding:9px 18px;font-size:.82rem;color:var(--ink-soft);border:1px solid rgba(58,63,51,.08)}
+  .cred b{color:var(--ink);font-weight:600}
+
+  /* ---------- PATH (signature) ---------- */
+  .path{background:var(--cream);position:relative}
+  .path-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
+  .path-steps{display:flex;flex-direction:column;gap:0;position:relative}
+  .spine{position:absolute;left:34px;top:40px;bottom:40px;width:2px;background:linear-gradient(var(--sage),var(--rose),var(--denim));opacity:.4}
+  .step{
+    display:grid;grid-template-columns:70px 1fr;gap:30px;
+    padding:34px 0;position:relative;align-items:start;
+  }
+  .step + .step{border-top:1px solid rgba(58,63,51,.1)}
+  .step-num{
+    width:70px;height:70px;border-radius:50%;background:var(--white);
+    border:2px solid var(--sage);display:grid;place-items:center;
+    font-family:var(--display);font-size:1.5rem;color:var(--sage-deep);
+    position:relative;z-index:2;font-weight:500;
+  }
+  .step.featured .step-num{border-color:var(--rose);color:var(--rose);background:var(--white)}
+  .step-body{padding-top:6px}
+  .step-tag{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:8px}
+  .step h3{font-family:var(--display);font-weight:500;font-size:1.55rem;letter-spacing:-.01em;margin-bottom:10px}
+  .step h3 .price{color:var(--rose);font-style:italic;font-weight:400}
+  .step p{color:var(--ink-soft);font-weight:300;max-width:560px;font-size:1.02rem}
+  .step.featured{
+    background:var(--white);margin:8px -28px;padding:38px 28px;border-radius:24px;
+    border-top:none!important;box-shadow:0 24px 50px -28px rgba(58,63,51,.28);
+  }
+  .step.featured + .step{border-top:none}
+  .free-pill{display:inline-block;background:var(--sage);color:var(--white);font-size:.72rem;letter-spacing:.08em;padding:4px 12px;border-radius:100px;margin-left:10px;vertical-align:middle;font-weight:500;text-transform:uppercase}
+
+  /* ---------- PACKAGES ---------- */
+  .packages{background:var(--ink);color:var(--cream)}
+  .packages .sec-label{color:var(--mauve)}
+  .packages h2{color:var(--white)}
+  .packages .sec-head p{color:rgba(245,240,232,.7)}
+  .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pkg{
+    background:rgba(255,255,255,.04);border:1px solid rgba(245,240,232,.13);
+    border-radius:22px;padding:36px 30px;display:flex;flex-direction:column;
+    transition:transform .35s, border-color .35s, background .35s;
+  }
+  .pkg:hover{transform:translateY(-6px);border-color:var(--rose);background:rgba(255,255,255,.07)}
+  .pkg.highlight{background:var(--pink-soft);color:var(--ink);border-color:var(--pink-soft)}
+  .pkg-name{font-family:var(--display);font-size:1.5rem;font-weight:500;margin-bottom:6px}
+  .pkg-best{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--rose);font-weight:600;margin-bottom:14px;display:block}
+  .pkg-cadence{font-size:.86rem;color:rgba(245,240,232,.6);margin-bottom:24px}
+  .pkg.highlight .pkg-cadence{color:var(--ink-soft)}
+  .pkg-price{font-family:var(--display);font-size:2.6rem;font-weight:400;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+  .pkg-price small{font-size:.9rem;font-family:var(--body);color:rgba(245,240,232,.55);font-weight:300}
+  .pkg.highlight .pkg-price small{color:var(--ink-soft)}
+  .pkg ul{list-style:none;margin:26px 0 30px;display:flex;flex-direction:column;gap:13px;flex:1}
+  .pkg li{font-size:.92rem;font-weight:300;display:flex;gap:11px;align-items:flex-start;color:rgba(245,240,232,.82)}
+  .pkg.highlight li{color:var(--ink-soft)}
+  .pkg li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--sage);margin-top:8px;flex-shrink:0}
+  .pkg.highlight li::before{background:var(--rose)}
+  .pkg-btn{
+    text-align:center;padding:13px;border-radius:100px;font-size:.88rem;font-weight:500;
+    border:1.5px solid rgba(245,240,232,.3);transition:.3s;
+  }
+  .pkg-btn:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+  .pkg.highlight .pkg-btn{background:var(--rose);color:var(--white);border-color:var(--rose)}
+  .pkg.highlight .pkg-btn:hover{background:var(--ink);border-color:var(--ink)}
+  .pkg-note{text-align:center;margin-top:34px;font-size:.88rem;color:rgba(245,240,232,.5);font-weight:300}
+
+  /* ---------- PHILOSOPHY QUOTE ---------- */
+  .philosophy{background:var(--pink-soft);color:var(--ink);text-align:center}
+  .philosophy .wrap{max-width:840px}
+  .philosophy blockquote{font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.22;letter-spacing:-.01em}
+  .philosophy blockquote em{font-style:italic;color:var(--rose)}
+  .philosophy .sig{margin-top:30px;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mauve)}
+
+  /* ---------- BOOKING / CTA ---------- */
+  .booking{background:var(--cream-warm)}
+  .booking-card{
+    background:var(--white);border-radius:30px;padding:64px 56px;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+    box-shadow:0 30px 70px -36px rgba(58,63,51,.35);
+  }
+  .booking-card h2{margin-bottom:18px}
+  .booking-card .lead{color:var(--ink-soft);font-size:1.08rem;font-weight:300;margin-bottom:30px}
+  .booking-steps{display:flex;flex-direction:column;gap:16px;margin-bottom:34px}
+  .bk{display:flex;gap:14px;align-items:center;font-size:.95rem;color:var(--ink-soft)}
+  .bk b{width:26px;height:26px;border-radius:50%;background:var(--cream);color:var(--sage-deep);display:grid;place-items:center;font-size:.8rem;flex-shrink:0;font-weight:600}
+  .booking-embed{border-radius:22px;overflow:hidden;background:var(--cream);box-shadow:0 20px 44px -22px rgba(58,63,51,.3)}
+  .booking-embed .calendly-inline-widget{border-radius:22px;overflow:hidden}
+  .embed-fallback{display:none;margin:16px auto 0;width:fit-content}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--cream);padding:70px 0 36px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(245,240,232,.13)}
+  .foot-logo{font-family:var(--display);font-size:1.7rem;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+  .foot-logo .dot{width:9px;height:9px;border-radius:50%;background:var(--clay)}
+  .foot-grid p{color:rgba(245,240,232,.6);font-weight:300;font-size:.95rem;max-width:300px}
+  .foot-col h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mauve);margin-bottom:18px;font-weight:600}
+  .foot-col a{display:block;color:rgba(245,240,232,.72);font-size:.93rem;margin-bottom:12px;font-weight:300;transition:color .25s}
+  .foot-col a:hover{color:var(--cream)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:14px}
+  .foot-bottom p{font-size:.82rem;color:rgba(245,240,232,.45);font-weight:300}
+  .foot-bottom .disclaim{max-width:560px}
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .strip-track{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    nav{padding:16px 22px}
+    nav.scrolled{padding:12px 22px}
+    .nav-links{position:fixed;inset:0 0 0 auto;width:74%;max-width:320px;background:var(--cream);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.7,.2,1);box-shadow:-20px 0 60px -20px rgba(58,63,51,.3)}
+    .nav-links.open{transform:none}
+    .nav-toggle{display:flex;z-index:101}
+    .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-toggle.open span:nth-child(2){opacity:0}
+    .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-visual{height:400px;max-width:440px}
+    .about-grid{grid-template-columns:1fr;gap:40px}
+    .about-portrait{max-width:380px}
+    .pkg-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+    .booking-card{grid-template-columns:1fr;padding:44px 30px;gap:36px}
+    .booking-embed{order:-1}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px}
+    section{padding:76px 0}
+    .step{grid-template-columns:54px 1fr;gap:18px}
+    .step-num{width:54px;height:54px;font-size:1.2rem}
+    .spine{left:26px}
+    .step.featured{margin:8px -20px;padding:30px 20px}
+    .badge-float{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#top" class="logo"><span class="dot"></span>Happei Health</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#path">How it works</a>
+    <a href="#packages">Packages</a>
+    <a href="#book" class="nav-cta">Book a free call</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Personalized nutrition coaching</span>
+        <h1>Small steps,<br><em>big change.</em></h1>
+        <p class="hero-sub">Personalized nutrition built around your real life, your history, your routine, your training, your goals. Not another meal plan you abandon in three months. This is about learning the why, building habits that last, and getting to a place where you've got this on your own.</p>
+        <div class="hero-actions">
+          <a href="#book" class="btn-primary">Start with a free call</a>
+          <a href="#path" class="btn-ghost">See how it works <span class="arrow">→</span></a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="blob blob-1"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=700&q=80" alt="Fresh whole foods arranged on a table"></div>
+        <div class="blob blob-2"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="Woman stretching in soft natural light"></div>
+        <div class="badge-float">
+          <div class="ring"><span>1:1</span></div>
+          <p><strong>Always one-on-one</strong>Every plan built by me, never automated.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>healthy looks good on you</span><span>healthy looks good on you</span><span>healthy looks good on you</span>
+    <span>healthy looks good on you</span><span>healthy looks good on you</span><span>healthy looks good on you</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-portrait reveal">
+        <span class="leaf"></span>
+        <div class="frame"><img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=700&q=80" alt="Your nutrition coach"></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="sec-label">Hi, it's me, Shalei</span>
+        <h2>I've <em>walked the walk.</em></h2>
+        <p>My own health journey is where all of this started. I live with four autoimmune conditions, two of them, celiac and Meniere's, are completely controlled through diet. I've had celiac for over ten years, and learning how much the right food changes everything taught me that real wellness isn't about looking a certain way or following rigid rules that lead to burnout. It's about understanding your own body and doing it in a way you can actually sustain.</p>
+        <p><strong>I sought out the resources, figured it out, and changed my life.</strong> Now I want to help you do the same. I've been a certified nutrition coach since 2022, I'm also a certified personal trainer, and I teach Lagree. I stay current on nutrition because I find it genuinely fascinating. But honestly, the thing that sets me apart is that I've lived it.</p>
+        <p>My goal isn't to keep you dependent on me. It's the opposite. I want you to learn so much that you eventually don't need me at all, because you'll have the knowledge and confidence to carry it forward on your own.</p>
+        <div class="creds">
+          <span class="cred"><b>Certified</b> Nutrition Coach since 2022</span>
+          <span class="cred"><b>Certified</b> Personal Trainer</span>
+          <span class="cred"><b>Lagree</b> Instructor</span>
+          <span class="cred">10+ years living with celiac</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="path" id="path">
+  <div class="wrap">
+    <div class="path-intro reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="sec-label">How it works</span>
+        <h2>Your path, <em>step by step.</em></h2>
+      </div>
+      <p style="max-width:340px;color:var(--ink-soft);font-weight:300">Start free, with zero pressure. We only go further if it feels right for you.</p>
+    </div>
+
+    <div class="path-steps">
+      <div class="spine"></div>
+
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <span class="step-tag">First touch · 20 minutes</span>
+          <h3>Discovery Call <span class="free-pill">Free</span></h3>
+          <p>A relaxed, no-strings conversation. We get to know each other, you tell me what you're hoping for, and I share how I work. You leave with a clearer sense of your next step, whether or not we keep going together.</p>
+        </div>
+      </div>
+
+      <div class="step featured reveal">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <span class="step-tag">The deep dive · 60 minutes</span>
+          <h3>In-Depth Consultation <span class="price">· $250</span></h3>
+          <p>The real foundation. We go deep into your family and personal health history, dietary preferences, daily routine, current training, energy, sleep, and stress. I want to know what you actually like, what's sustainable for you, when you eat, and why, before I ever hand you a plan. You'll leave with a clear, personalized picture of where you are and exactly where to begin.</p>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <span class="step-tag">Ongoing · choose your rhythm</span>
+          <h3>Regular Check-Ins &amp; Adjustments</h3>
+          <p>Real change happens in the follow-through. We meet on a cadence that fits your life to review what's working and adjust as your body and schedule shift. Because I coach the whole picture, nutrition and the way you move, this is as much about lifestyle as it is about food. Pick a package below that matches the level of guidance you want.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packages" id="packages">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-label">Ongoing support</span>
+      <h2>Check-in packages.</h2>
+      <p>Each package picks up after your in-depth consultation. Choose the rhythm of support that fits where you are right now. You can move between tiers anytime.</p>
+    </div>
+
+    <div class="pkg-grid">
+      <div class="pkg reveal">
+        <div class="pkg-name">Reset</div>
+        <span class="pkg-cadence">Monthly check-in</span>
+        <div class="pkg-price">$175<small> / month</small></div>
+        <ul>
+          <li>One 45-minute check-in each month</li>
+          <li>Plan adjustments based on your progress</li>
+          <li>Email support between sessions</li>
+          <li>Best for steady, self-driven habit building</li>
+        </ul>
+        <a href="#book" class="pkg-btn">Choose Reset</a>
+      </div>
+
+      <div class="pkg highlight reveal">
+        <div class="pkg-name">Rhythm</div>
+        <span class="pkg-best">Most popular</span>
+        <span class="pkg-cadence">Bi-weekly check-ins</span>
+        <div class="pkg-price">$300<small> / month</small></div>
+        <ul>
+          <li>Two 45-minute check-ins each month</li>
+          <li>Ongoing plan &amp; macro adjustments</li>
+          <li>Priority messaging support</li>
+          <li>Workout &amp; nutrition alignment</li>
+          <li>Best for real momentum and accountability</li>
+        </ul>
+        <a href="#book" class="pkg-btn">Choose Rhythm</a>
+      </div>
+
+      <div class="pkg reveal">
+        <div class="pkg-name">Devoted</div>
+        <span class="pkg-cadence">Weekly check-ins</span>
+        <div class="pkg-price">$450<small> / month</small></div>
+        <ul>
+          <li>Three 45-minute check-ins each month</li>
+          <li>Fully tailored, evolving plan</li>
+          <li>Direct messaging access all week</li>
+          <li>Best for big goals &amp; close guidance</li>
+        </ul>
+        <a href="#book" class="pkg-btn">Choose Devoted</a>
+      </div>
+    </div>
+    <p class="pkg-note">Not sure which fits? We'll figure it out together on your free discovery call.</p>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="wrap reveal">
+    <blockquote>My goal is for you to <em>eventually not need me.</em> To learn this so well that you can carry it forward on your own, sustainably, for the rest of your life.</blockquote>
+    <div class="sig">— Shalei</div>
+  </div>
+</section>
+
+<section class="booking" id="book">
+  <div class="wrap">
+    <div class="booking-card reveal">
+      <div>
+        <span class="sec-label">Let's begin</span>
+        <h2>Book your free discovery call.</h2>
+        <p class="lead">Pick a time that works for you. We'll talk for about 20 minutes, with no pressure and no commitment. The first step is always free.</p>
+        <div class="booking-steps">
+          <div class="bk"><b>1</b> Choose a time on the calendar</div>
+          <div class="bk"><b>2</b> Get a confirmation &amp; a few quick questions</div>
+          <div class="bk"><b>3</b> We meet, and map out your next step</div>
+        </div>
+      </div>
+      <div class="booking-embed">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/happei-health?hide_gdpr_banner=1&primary_color=c77b58" style="min-width:300px;height:640px;"></div>
+        <a href="https://calendly.com/happei-health" class="btn-primary embed-fallback" target="_blank" rel="noopener">Open the booking calendar →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo"><span class="dot"></span>Happei Health</div>
+        <p>Personalized, sustainable nutrition coaching. Built around your real life, one small step at a time.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#about">About me</a>
+        <a href="#path">How it works</a>
+        <a href="#packages">Packages</a>
+        <a href="#book">Book a call</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://calendly.com/happei-health" target="_blank" rel="noopener">Book online</a>
+        <a href="#">Instagram</a>
+        <a href="mailto:hello@happeihealth.com">hello@happeihealth.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Happei Health. All rights reserved.</p>
+      <p class="disclaim">Nutrition coaching is for general wellness and is not a substitute for medical care or diagnosis.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav scroll state
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>30));
+  // mobile menu
+  const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{toggle.classList.remove('open');links.classList.remove('open')}));
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
