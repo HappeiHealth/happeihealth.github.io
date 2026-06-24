@@ -78,19 +78,20 @@
     min-height:100vh;display:flex;align-items:center;position:relative;
     padding:120px 0 60px;
     background:
+      radial-gradient(85% 75% at 12% 18%, rgba(232,164,184,.16), transparent 55%),
       radial-gradient(120% 90% at 80% 8%, rgba(199,123,88,.10), transparent 52%),
-      radial-gradient(75% 70% at 96% 42%, rgba(217,140,154,.24), transparent 55%),
-      radial-gradient(70% 60% at 88% 80%, rgba(126,148,168,.12), transparent 55%),
-      radial-gradient(90% 80% at 8% 88%, rgba(138,154,126,.16), transparent 60%),
+      radial-gradient(75% 70% at 96% 42%, rgba(217,140,154,.28), transparent 55%),
+      radial-gradient(70% 60% at 88% 80%, rgba(126,148,168,.10), transparent 55%),
+      radial-gradient(90% 80% at 8% 90%, rgba(138,154,126,.14), transparent 60%),
       var(--cream);
   }
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;width:100%}
   .eyebrow{
     display:inline-flex;align-items:center;gap:10px;
     font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
-    color:var(--sage-deep);font-weight:500;margin-bottom:26px;
+    color:var(--rose);font-weight:500;margin-bottom:26px;
   }
-  .eyebrow::before{content:"";width:30px;height:1px;background:var(--sage-deep);display:inline-block}
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--rose);display:inline-block}
   h1{
     font-family:var(--display);
     font-weight:400;
@@ -241,7 +242,7 @@
   /* ---------- PHILOSOPHY QUOTE ---------- */
   .philosophy{background:var(--pink-soft);color:var(--ink);text-align:center}
   .philosophy .wrap{max-width:840px}
-  .philosophy blockquote{font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.22;letter-spacing:-.01em}
+  .philosophy blockquote{font-family:var(--display);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.7rem);line-height:1.22;letter-spacing:-.01em;font-feature-settings:"liga" 0, "dlig" 0, "calt" 0}
   .philosophy blockquote em{font-style:italic;color:var(--rose)}
   .philosophy .sig{margin-top:30px;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mauve)}
 
