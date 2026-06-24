@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <style>
   :root{
     --sage:#8A9A7E;
@@ -253,8 +255,9 @@
   .booking-steps{display:flex;flex-direction:column;gap:16px;margin-bottom:34px}
   .bk{display:flex;gap:14px;align-items:center;font-size:.95rem;color:var(--ink-soft)}
   .bk b{width:26px;height:26px;border-radius:50%;background:var(--cream);color:var(--sage-deep);display:grid;place-items:center;font-size:.8rem;flex-shrink:0;font-weight:600}
-  .booking-visual{border-radius:22px;overflow:hidden;aspect-ratio:1;box-shadow:0 20px 44px -22px rgba(58,63,51,.4)}
-  .booking-visual img{width:100%;height:100%;object-fit:cover}
+  .booking-embed{border-radius:22px;overflow:hidden;background:var(--cream);box-shadow:0 20px 44px -22px rgba(58,63,51,.3)}
+  .booking-embed .calendly-inline-widget{border-radius:22px;overflow:hidden}
+  .embed-fallback{display:none;margin:16px auto 0;width:fit-content}
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--ink);color:var(--cream);padding:70px 0 36px}
@@ -294,7 +297,7 @@
     .about-portrait{max-width:380px}
     .pkg-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
     .booking-card{grid-template-columns:1fr;padding:44px 30px;gap:36px}
-    .booking-visual{order:-1;max-width:340px}
+    .booking-embed{order:-1}
     .foot-grid{grid-template-columns:1fr;gap:32px}
   }
   @media (max-width:520px){
@@ -327,7 +330,7 @@
       <div class="hero-copy reveal">
         <span class="eyebrow">Personalized nutrition coaching</span>
         <h1>Small steps,<br><em>big change.</em></h1>
-        <p class="hero-sub">Personalized, root-cause nutrition built around your real life: your history, your routine, your training, your goals. No crash plans, no guesswork. Just a path that actually fits you.</p>
+        <p class="hero-sub">Personalized nutrition built around your real life, your history, your routine, your training, your goals. Not another meal plan you abandon in three months. This is about learning the why, building habits that last, and getting to a place where you've got this on your own.</p>
         <div class="hero-actions">
           <a href="#book" class="btn-primary">Start with a free call</a>
           <a href="#path" class="btn-ghost">See how it works <span class="arrow">→</span></a>
@@ -347,8 +350,8 @@
 
 <div class="strip">
   <div class="strip-track">
-    <span>Balance</span><span class="varsity">Wellness</span><span>Healthy looks good on you</span><span>Whole foods</span><span>Small steps, big change</span>
-    <span>Balance</span><span class="varsity">Wellness</span><span>Healthy looks good on you</span><span>Whole foods</span><span>Small steps, big change</span>
+    <span>healthy looks good on you</span><span>healthy looks good on you</span><span>healthy looks good on you</span>
+    <span>healthy looks good on you</span><span>healthy looks good on you</span><span>healthy looks good on you</span>
   </div>
 </div>
 
@@ -360,15 +363,16 @@
         <div class="frame"><img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=700&q=80" alt="Your nutrition coach"></div>
       </div>
       <div class="about-text reveal">
-        <span class="sec-label">Hi, it's me</span>
-        <h2>Food should <em>work with</em> your life, not against it.</h2>
-        <p>I'm a certified nutrition coach and personal trainer who's spent years helping people stop fighting their bodies and start feeling at home in them. I teach Lagree, I love a good farmers-market haul, and I believe the best plan is the one you can actually keep.</p>
-        <p><strong>My approach starts with listening.</strong> Before we ever talk macros, I want to understand your story: your history, your habits, the way you move, and what "feeling good" honestly means to you. From there, we build something steady and personal, one small step at a time.</p>
+        <span class="sec-label">Hi, it's me, Shalei</span>
+        <h2>I've <em>walked the walk.</em></h2>
+        <p>My own health journey is where all of this started. I live with four autoimmune conditions, two of them, celiac and Meniere's, are completely controlled through diet. I've had celiac for over ten years, and learning how much the right food changes everything taught me that real wellness isn't about looking a certain way or following rigid rules that lead to burnout. It's about understanding your own body and doing it in a way you can actually sustain.</p>
+        <p><strong>I sought out the resources, figured it out, and changed my life.</strong> Now I want to help you do the same. I've been a certified nutrition coach since 2022, I'm also a certified personal trainer, and I teach Lagree. I stay current on nutrition because I find it genuinely fascinating. But honestly, the thing that sets me apart is that I've lived it.</p>
+        <p>My goal isn't to keep you dependent on me. It's the opposite. I want you to learn so much that you eventually don't need me at all, because you'll have the knowledge and confidence to carry it forward on your own.</p>
         <div class="creds">
-          <span class="cred"><b>Certified</b> Nutrition Coach</span>
+          <span class="cred"><b>Certified</b> Nutrition Coach since 2022</span>
           <span class="cred"><b>Certified</b> Personal Trainer</span>
           <span class="cred"><b>Lagree</b> Instructor</span>
-          <span class="cred">Blood-work informed mapping</span>
+          <span class="cred">10+ years living with celiac</span>
         </div>
       </div>
     </div>
@@ -400,9 +404,9 @@
       <div class="step featured reveal">
         <div class="step-num">02</div>
         <div class="step-body">
-          <span class="step-tag">The deep dive · 75–90 minutes</span>
+          <span class="step-tag">The deep dive · 60 minutes</span>
           <h3>In-Depth Consultation <span class="price">· $250</span></h3>
-          <p>The real foundation. We go deep into your family and personal health history, dietary preferences, daily routine, current training, energy, sleep, and stress. By the end you'll have a clear, personalized picture of where you are and exactly where to begin, plus a written starting plan to take with you.</p>
+          <p>The real foundation. We go deep into your family and personal health history, dietary preferences, daily routine, current training, energy, sleep, and stress. I want to know what you actually like, what's sustainable for you, when you eat, and why, before I ever hand you a plan. You'll leave with a clear, personalized picture of where you are and exactly where to begin.</p>
         </div>
       </div>
 
@@ -411,7 +415,7 @@
         <div class="step-body">
           <span class="step-tag">Ongoing · choose your rhythm</span>
           <h3>Regular Check-Ins &amp; Adjustments</h3>
-          <p>Real change happens in the follow-through. We meet on a cadence that fits your life to review what's working, adjust as your body and schedule shift, and keep you accountable and supported. Pick a package below that matches the level of guidance you want.</p>
+          <p>Real change happens in the follow-through. We meet on a cadence that fits your life to review what's working and adjust as your body and schedule shift. Because I coach the whole picture, nutrition and the way you move, this is as much about lifestyle as it is about food. Pick a package below that matches the level of guidance you want.</p>
         </div>
       </div>
     </div>
@@ -430,7 +434,7 @@
       <div class="pkg reveal">
         <div class="pkg-name">Reset</div>
         <span class="pkg-cadence">Monthly check-in</span>
-        <div class="pkg-price">$120<small> / month</small></div>
+        <div class="pkg-price">$175<small> / month</small></div>
         <ul>
           <li>One 45-minute check-in each month</li>
           <li>Plan adjustments based on your progress</li>
@@ -444,7 +448,7 @@
         <div class="pkg-name">Rhythm</div>
         <span class="pkg-best">Most popular</span>
         <span class="pkg-cadence">Bi-weekly check-ins</span>
-        <div class="pkg-price">$220<small> / month</small></div>
+        <div class="pkg-price">$300<small> / month</small></div>
         <ul>
           <li>Two 45-minute check-ins each month</li>
           <li>Ongoing plan &amp; macro adjustments</li>
@@ -458,12 +462,11 @@
       <div class="pkg reveal">
         <div class="pkg-name">Devoted</div>
         <span class="pkg-cadence">Weekly check-ins</span>
-        <div class="pkg-price">$390<small> / month</small></div>
+        <div class="pkg-price">$450<small> / month</small></div>
         <ul>
-          <li>Four 45-minute check-ins each month</li>
+          <li>Three 45-minute check-ins each month</li>
           <li>Fully tailored, evolving plan</li>
           <li>Direct messaging access all week</li>
-          <li>Optional blood-work informed mapping</li>
           <li>Best for big goals &amp; close guidance</li>
         </ul>
         <a href="#book" class="pkg-btn">Choose Devoted</a>
@@ -475,8 +478,8 @@
 
 <section class="philosophy">
   <div class="wrap reveal">
-    <blockquote>I don't believe in shrinking yourself. I believe in <em>nourishing</em> yourself, until feeling good becomes the most natural thing you do.</blockquote>
-    <div class="sig">— Happei Health</div>
+    <blockquote>My goal is for you to <em>eventually not need me.</em> To learn this so well that you can carry it forward on your own, sustainably, for the rest of your life.</blockquote>
+    <div class="sig">— Shalei</div>
   </div>
 </section>
 
@@ -492,10 +495,10 @@
           <div class="bk"><b>2</b> Get a confirmation &amp; a few quick questions</div>
           <div class="bk"><b>3</b> We meet, and map out your next step</div>
         </div>
-        <a href="https://calendly.com/happeihealth" class="btn-primary" target="_blank" rel="noopener">Open the booking calendar →</a>
       </div>
-      <div class="booking-visual">
-        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=700&q=80" alt="Bright kitchen with fresh produce">
+      <div class="booking-embed">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/happei-health?hide_gdpr_banner=1&primary_color=c77b58" style="min-width:300px;height:640px;"></div>
+        <a href="https://calendly.com/happei-health" class="btn-primary embed-fallback" target="_blank" rel="noopener">Open the booking calendar →</a>
       </div>
     </div>
   </div>
@@ -517,7 +520,7 @@
       </div>
       <div class="foot-col">
         <h4>Connect</h4>
-        <a href="https://calendly.com/happeihealth" target="_blank" rel="noopener">Book online</a>
+        <a href="https://calendly.com/happei-health" target="_blank" rel="noopener">Book online</a>
         <a href="#">Instagram</a>
         <a href="mailto:hello@happeihealth.com">hello@happeihealth.com</a>
       </div>
