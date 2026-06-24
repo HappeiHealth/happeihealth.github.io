@@ -122,12 +122,12 @@
   /* hero visual: stacked organic frames */
   .hero-visual{position:relative;height:480px}
   .blob{
-    position:absolute;border-radius:50% 50% 48% 52%/55% 48% 52% 45%;
+    position:absolute;border-radius:50% 50% 14px 14px;
     overflow:hidden;box-shadow:0 30px 60px -25px rgba(58,63,51,.35);
   }
   .blob img{width:100%;height:100%;object-fit:cover}
-  .blob-1{width:62%;height:74%;top:0;right:4%;z-index:2;border-radius:48% 52% 50% 50%/52% 50% 50% 48%}
-  .blob-2{width:46%;height:50%;bottom:0;left:0;z-index:3;border:6px solid var(--cream)}
+  .blob-1{width:60%;height:78%;top:0;right:2%;z-index:2;border-radius:50% 50% 14px 14px}
+  .blob-2{width:48%;height:54%;bottom:0;left:6%;z-index:3;border:6px solid var(--cream);border-radius:50% 50% 12px 12px}
   .badge-float{
     position:absolute;bottom:30px;right:0;z-index:4;
     background:var(--white);border-radius:18px;padding:16px 20px;
@@ -163,9 +163,9 @@
   .about{background:var(--putty)}
   .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
   .about-portrait{position:relative}
-  .about-portrait .frame{border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 28px 56px -28px rgba(58,63,51,.4)}
+  .about-portrait .frame{border-radius:200px 200px 24px 24px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 28px 56px -28px rgba(58,63,51,.4);position:relative;z-index:1}
   .about-portrait .frame img{width:100%;height:100%;object-fit:cover}
-  .about-portrait .leaf{position:absolute;top:-18px;left:-18px;width:80px;height:80px;background:var(--rose);border-radius:50% 0 50% 50%;z-index:-1}
+  .about-portrait .leaf{position:absolute;bottom:-22px;right:-22px;width:75%;height:88%;background:var(--pink-soft);border-radius:180px 180px 20px 20px;z-index:0}
   .about-text h2{margin-bottom:24px}
   .about-text p{color:var(--ink-soft);margin-bottom:18px;font-weight:300;font-size:1.05rem}
   .about-text p strong{color:var(--ink);font-weight:500}
